@@ -1,0 +1,89 @@
+{% extends "base/base.html" %}
+{% block top_bar %}{% endblock top_bar %}
+{% block side_bar %}{% endblock side_bar %}
+{% block page_content %}{% endblock page_content %}
+{% block login %}
+<body class="bg-inverse-primary">
+    <div class="container">
+        
+
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+           
+           
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img src="https://i.pinimg.com/736x/17/ee/9e/17ee9e5c0355c5b0ac980657a10e3436.jpg" class="img-fluid rounded-left" style="border-left: 50%;">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h3 text-primary mb-4">¡Bienvenidos!</h1>
+                                    </div>
+                                    <br>
+                                    {% if form.errors %}
+                                        {% for field in form %}
+                                            {% for error in field.errors %}
+                                                <div class="alert alert-danger">
+                                                    <strong>{{error|escape}}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        {% for error in form.non_field_errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{error|escape}}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-label-group">
+                                            <input type="username" class="form-control form-control-user"
+                                                id="inputuser" name="username" 
+                                                placeholder="Enter Username..." required autofocus>
+                                            
+                                        </div>
+                                        <br>
+                                        <div class="form-label-group">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                id="inputPassword" placeholder="Password" required>
+                                            
+                                        </div>
+                                        <br>
+                                       
+                                        <button type="submit" class="btn btn-inverse-primary font-weight-bold" 
+                                        style="width: 350px;height: 50px;">Login</button>
+                                        
+                                       
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+{% endblock login %}
